@@ -1,17 +1,17 @@
 const PropTypes = require('prop-types');
-const _connectPropTypes = require('./index.js');
-const connectPropTypes = _connectPropTypes.default;
-const combineConnectors = _connectPropTypes.combineConnectors;
+const _assignPropTypes = require('./index.js');
+const assignPropTypes = _assignPropTypes.default;
+const combineAssigners = _assignPropTypes.combineAssigners;
 
 const DEFAULT_NODE = Symbol('DEFAULT_NODE');
 const DEFAULT_FUNC = Symbol('DEFAULT_FUNC');
 const DEFAULT_A = Symbol('DEFAULT_A');
 const DEFAULT_B = Symbol('DEFAULT_A');
 
-describe('connectPropTypes', () => {
+describe('assignPropTypes', () => {
   it ('Clean target', () => {
     const pseudoComponent = function () {};
-    const connector = connectPropTypes({
+    const assignor = assignPropTypes({
       node: PropTypes.node,
       func: PropTypes.func,
     }, {
@@ -20,7 +20,7 @@ describe('connectPropTypes', () => {
     }, {
       store: PropTypes.object,
     });
-    const resultCompontent = connector(pseudoComponent);
+    const resultCompontent = assignor(pseudoComponent);
     expect(resultCompontent).toBe(pseudoComponent);
     expect(resultCompontent.propTypes.node).toBe(PropTypes.node);
     expect(resultCompontent.propTypes.func).toBe(PropTypes.func);
@@ -40,7 +40,7 @@ describe('connectPropTypes', () => {
     pseudoComponent.contextTypes = {
       ownContext: PropTypes.string,
     };
-    const connector = connectPropTypes({
+    const assignor = assignPropTypes({
       node: PropTypes.node,
       func: PropTypes.func,
     }, {
@@ -49,7 +49,7 @@ describe('connectPropTypes', () => {
     }, {
       store: PropTypes.object,
     });
-    const resultCompontent = connector(pseudoComponent);
+    const resultCompontent = assignor(pseudoComponent);
     expect(resultCompontent).toBe(pseudoComponent);
     expect(resultCompontent.propTypes.node).toBe(PropTypes.node);
     expect(resultCompontent.propTypes.func).toBe(PropTypes.func);
@@ -60,23 +60,23 @@ describe('connectPropTypes', () => {
     expect(resultCompontent.contextTypes.store).toBe(PropTypes.object);
     expect(resultCompontent.contextTypes.ownContext).toBe(PropTypes.string);
   });
-  it ('Combine connectors', () => {
+  it ('Combine assignors', () => {
     const pseudoComponent = function () {};
-    const A = connectPropTypes({
+    const A = assignPropTypes({
       a: PropTypes.object,
     }, {
       a: DEFAULT_A,
     }, {
       a: PropTypes.func,
     });
-    const B = connectPropTypes({
+    const B = assignPropTypes({
       b: PropTypes.number,
     }, {
       b: DEFAULT_B,
     }, {
       b: PropTypes.symbol,
     });
-    combineConnectors(A, B)(pseudoComponent);
+    combineAssigners(A, B)(pseudoComponent);
     expect(pseudoComponent.propTypes.a).toBe(PropTypes.object);
     expect(pseudoComponent.propTypes.b).toBe(PropTypes.number);
     expect(pseudoComponent.defaultProps.a).toBe(DEFAULT_A);

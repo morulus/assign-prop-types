@@ -1,32 +1,32 @@
-connect-prop-types
+assign-prop-types
 ----
 
 Allow you to create stateless [React](https://facebook.github.io/react/) components with [propTypes](https://github.com/reactjs/prop-types) (and [defaultProps](https://facebook.github.io/react/docs/typechecking-with-proptypes.html) & [contextTypes](https://facebook.github.io/react/docs/context.html)) without breaking the chain.
 
-`connectPropTypes([propTypes], [defaultProps], [contextTypes]) : connector`
+`assignPropTypes([propTypes], [defaultProps], [contextTypes]) : assigner`
 
 Usage
 ----
 
 ```shell
-npm i connect-prop-types --S
+npm i assign-prop-types --S
 ```
 
 ```jsx
 import React from 'react';
 import PropTypes from 'prop-types';
-import connectPropTypes from 'connect-prop-types';
+import assignPropTypes from 'assign-prop-types';
 
-export default connectPropTypes({
+export default assignPropTypes({
   children: PropTypes.node.isRequired,
 })(({ children }) => (<div>{children}</div>));
 ```
 
-Prepare connector for reuse:
+Prepare assigner for reuse:
 
 ```jsx
 /* reusable-prop-types.js */
-export const textualChild = connectPropTypes({
+export const textualChild = assignPropTypes({
   children: PropTypes.node.isRequired,
 });
 ```
@@ -46,9 +46,9 @@ export default textualChildPropTypes(({ children }) => (<h2>{children}</h2>));
 Mixin up prop-types:
 
 ```jsx
-import { combineConnectors } from 'connect-prop-types';
+import { combineassigners } from 'assign-prop-types';
 import { textualChildPropTypes, classNamePropTypes } from '../reusable-prop-types';
-export default combineConnectors(
+export default combineassigners(
   textualChildPropTypes,
   classNamePropTypes,
 )(({ children, className }) => (<h1
@@ -68,7 +68,7 @@ Why?
 The code...
 
 ```jsx
-export default connectPropTypes({
+export default assignPropTypes({
   children: PropTypes.node.isRequired,
 })(({children}) => (<div>{children}</div>));
 ```

@@ -1,6 +1,6 @@
 exports.__esModule = true;
-function connectPropTypes(propTypes, defaultProps, contextTypes) {
-  return function propTypesConnector(component) {
+function assignPropTypes(propTypes, defaultProps, contextTypes) {
+  return function propTypesAssigner(component) {
     if (propTypes) {
       component.propTypes = Object.assign({}, component.propTypes || {}, propTypes);
     }
@@ -14,15 +14,15 @@ function connectPropTypes(propTypes, defaultProps, contextTypes) {
   };
 }
 
-exports.default = connectPropTypes;
+exports.default = assignPropTypes;
 
-var combineConnectors = exports.combineConnectors = function combineConnectors() {
+var combineAssigners = exports.combineAssigners = function combineAssigners() {
   let pseudoComponent = {};
-  var connectors = Array.prototype.slice.call(arguments);
-  connectors.forEach((connector) => {
-    pseudoComponent = connector(pseudoComponent);
+  var assignors = Array.prototype.slice.call(arguments);
+  assignors.forEach((assignor) => {
+    pseudoComponent = assignor(pseudoComponent);
   });
-  return connectPropTypes(
+  return assignPropTypes(
     pseudoComponent.propTypes,
     pseudoComponent.defaultProps,
     pseudoComponent.contextTypes
