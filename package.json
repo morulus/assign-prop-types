@@ -1,7 +1,7 @@
 {
   "name": "assign-prop-types",
   "version": "1.0.0",
-  "description": "Add propTypes (and defaultProps & contextTypes) to the component in a functional style",
+  "description": "Assign propTypes (and defaultProps & contextTypes) to the component in a functional style",
   "main": "index.js",
   "scripts": {
     "test": "jest test.js"
