@@ -46,9 +46,9 @@ export default textualChildPropTypes(({ children }) => (<h2>{children}</h2>));
 Mixin up prop-types:
 
 ```jsx
-import { combineassigners } from 'assign-prop-types';
+import { combineAssigners } from 'assign-prop-types';
 import { textualChildPropTypes, classNamePropTypes } from '../reusable-prop-types';
-export default combineassigners(
+export default combineAssigners(
   textualChildPropTypes,
   classNamePropTypes,
 )(({ children, className }) => (<h1
