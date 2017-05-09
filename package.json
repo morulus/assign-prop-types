@@ -1,6 +1,6 @@
 {
   "name": "connect-prop-types",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Add propTypes (and defaultProps & contextTypes) to the component in a functional style",
   "main": "index.js",
   "scripts": {

@@ -1,5 +1,3 @@
-"use strict";
-
 exports.__esModule = true;
 function connectPropTypes(propTypes, defaultProps, contextTypes) {
   return function propTypesConnector(component) {
@@ -14,19 +12,19 @@ function connectPropTypes(propTypes, defaultProps, contextTypes) {
     }
     return component;
   };
-};
+}
 
 exports.default = connectPropTypes;
 
 var combineConnectors = exports.combineConnectors = function combineConnectors() {
   let pseudoComponent = {};
-  const connectors = Array.prototype.slice.call(arguments);
-  connectors.forEach(function(connector) {
+  var connectors = Array.prototype.slice.call(arguments);
+  connectors.forEach((connector) => {
     pseudoComponent = connector(pseudoComponent);
   });
   return connectPropTypes(
     pseudoComponent.propTypes,
     pseudoComponent.defaultProps,
-    pseudoComponent.contextTypes,
+    pseudoComponent.contextTypes
   );
-}
+};
