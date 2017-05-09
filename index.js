@@ -18,8 +18,8 @@ exports.default = assignPropTypes;
 
 var combineAssigners = exports.combineAssigners = function combineAssigners() {
   let pseudoComponent = {};
-  var assignors = Array.prototype.slice.call(arguments);
-  assignors.forEach((assignor) => {
+  var assigners = Array.prototype.slice.call(arguments);
+  assigners.forEach((assignor) => {
     pseudoComponent = assignor(pseudoComponent);
   });
   return assignPropTypes(

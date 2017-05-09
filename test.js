@@ -60,7 +60,7 @@ describe('assignPropTypes', () => {
     expect(resultCompontent.contextTypes.store).toBe(PropTypes.object);
     expect(resultCompontent.contextTypes.ownContext).toBe(PropTypes.string);
   });
-  it ('Combine assignors', () => {
+  it ('Combine assigners', () => {
     const pseudoComponent = function () {};
     const A = assignPropTypes({
       a: PropTypes.object,
