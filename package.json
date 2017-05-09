@@ -1,6 +1,6 @@
 {
   "name": "assign-prop-types",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Assign propTypes (and defaultProps & contextTypes) to the component in a functional style",
   "main": "index.js",
   "scripts": {
@@ -15,5 +15,17 @@
   "devDependencies": {
     "jest": "^20.0.0",
     "prop-types": "^15.5.8"
-  }
+  },
+  "dependencies": {
+    "jest": "^20.0.0",
+    "prop-types": "^15.5.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/morulus/assign-prop-types.git"
+  },
+  "bugs": {
+    "url": "https://github.com/morulus/assign-prop-types/issues"
+  },
+  "homepage": "https://github.com/morulus/assign-prop-types#readme"
 }
