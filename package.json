@@ -1,6 +1,6 @@
 {
   "name": "assign-prop-types",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Assign propTypes (and defaultProps & contextTypes) to the component in a functional style",
   "main": "index.js",
   "scripts": {
@@ -13,10 +13,6 @@
   "author": "Vladimir Kalmykov <vladimirmorulus@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "jest": "^20.0.0",
-    "prop-types": "^15.5.8"
-  },
-  "dependencies": {
     "jest": "^20.0.0",
     "prop-types": "^15.5.8"
   },
