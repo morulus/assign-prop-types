@@ -1,7 +1,7 @@
 assign-prop-types
 ----
 
-Allow you to create stateless [React](https://facebook.github.io/react/) components with [propTypes](https://github.com/reactjs/prop-types) (and [defaultProps](https://facebook.github.io/react/docs/typechecking-with-proptypes.html) & [contextTypes](https://facebook.github.io/react/docs/context.html)) without breaking the chain.
+Allows you to create stateless [React](https://facebook.github.io/react/) components with [propTypes](https://github.com/reactjs/prop-types) (and [defaultProps](https://facebook.github.io/react/docs/typechecking-with-proptypes.html) & [contextTypes](https://facebook.github.io/react/docs/context.html)) without breaking the chain.
 
 `assignPropTypes([propTypes], [defaultProps], [contextTypes]) : assigner`
 
