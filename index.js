@@ -2,8 +2,8 @@ exports.__esModule = true;
 var isDevelopment = typeof process === 'object' && process.env && process.env.NODE_ENV !== 'production';
 var ASSIGNER = typeof Symbol === 'function' ? Symbol('PROP_TYPES_ASSIGNER') : 'PROP_TYPES_ASSIGNER';
 
-function markAssigner(originalAssigner) {
-  Object.defineProperty(originalAssigner, ASSIGNER, {
+function markAssigner(assigner) {
+  Object.defineProperty(assigner, ASSIGNER, {
     enumerable: false,
     writable: false,
     configurable: false,
