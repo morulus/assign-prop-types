@@ -4,7 +4,7 @@
   "description": "Assign propTypes (and defaultProps & contextTypes) to the component in a functional style",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/eslint index.js && jest test.js"
+    "test": "./node_modules/.bin/eslint index.js && ./node_modules/.bin/jest test.js"
   },
   "keywords": [
     "react",
