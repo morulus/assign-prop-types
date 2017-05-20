@@ -1,86 +1,111 @@
 assign-prop-types
 ----
 
-Allows you to create stateless [React](https://facebook.github.io/react/) components with [propTypes](https://github.com/reactjs/prop-types) (and [defaultProps](https://facebook.github.io/react/docs/typechecking-with-proptypes.html) & [contextTypes](https://facebook.github.io/react/docs/context.html)) without breaking the chain.
+Allows you to create stateless [React](https://facebook.github.io/react/) components with assigned [propTypes](https://github.com/reactjs/prop-types) (and [defaultProps](https://facebook.github.io/react/docs/typechecking-with-proptypes.html) & [contextTypes](https://facebook.github.io/react/docs/context.html)) without breaking the chain.
 
-`assignPropTypes([propTypes], [defaultProps], [contextTypes]) : assigner`
-
-Usage
-----
-
-```shell
-npm i assign-prop-types --S
-```
-
-```jsx
-import React from 'react';
-import PropTypes from 'prop-types';
-import assignPropTypes from 'assign-prop-types';
-
+```js
 export default assignPropTypes({
   children: PropTypes.node.isRequired,
 })(({ children }) => (<div>{children}</div>));
 ```
 
-Prepare assigner for reuse:
+Install
+----
 
-```jsx
-/* reusable-prop-types.js */
-export const textualChild = assignPropTypes({
+Yarn:
+```shell
+yarn add assign-prop-types
+```
+
+Npm:
+```shell
+npm install assign-prop-types --S
+```
+
+Import
+----
+
+```js
+import assignPropTypes from 'assign-prop-types';
+```
+
+In most cases, you will also need to import packages [react](https://www.npmjs.com/package/react) and [prop-types](https://www.npmjs.com/package/prop-types) (or `React.PropTypes` for [React v15.5](https://facebook.github.io/react/warnings/dont-call-proptypes.html)).
+
+```js
+import React from 'react';
+import PropTypes from 'prop-types';
+import assignPropTypes from 'assign-prop-types';
+```
+
+Usage
+----
+
+The function assignPropTypes accepts optional arguments `propTypes`, `defaultProp`, `contextTypes`. It returns function, called assigner, which, in turn, accepts React component and returns component, mutaded by passed properties.
+
+```js
+export default assignPropTypes({
+  children: PropTypes.node.isRequired,
+})(({ children }) => (<div>{children}</div>));
+```
+
+Identical to:
+
+```js
+const Component = ({ children }) => (<div>{children}</div>);
+Component.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+export default Component;
+```
+
+Reusable assigner
+----
+
+Assigners can be prepared in advance:
+
+```js
+const assignUsualTypes = assignPropTypes({
   children: PropTypes.node.isRequired,
 });
 ```
+And applied later:
 
-```jsx
-/* H1.js */
-import { textualChildPropTypes } from '../reusable-prop-types';
-export default textualChildPropTypes(({ children }) => (<h1>{children}</h1>));
+```js
+export default assignUsualTypes(({ children }) => (<h2>{children}</h2>));
 ```
 
-```jsx
-/* H2.js */
-import { textualChildPropTypes } from '../reusable-prop-types';
-export default textualChildPropTypes(({ children }) => (<h2>{children}</h2>));
+Extending
+----
+
+Assigners can be extended. To perform it, just call assigner with advanced configuration:
+
+```js
+const usualPropTypes = assignPropTypes({
+  children: PropTypes.node.isRequired,
+});
+export default usualPropTypes({
+  title: PropTypes.string,
+})(YourComponent);
 ```
 
-Mixin up prop-types:
+Or passing another assigner(s):
 
-```jsx
-import { combineAssigners } from 'assign-prop-types';
-import { textualChildPropTypes, classNamePropTypes } from '../reusable-prop-types';
-export default combineAssigners(
-  textualChildPropTypes,
-  classNamePropTypes,
-)(({ children, className }) => (<h1
-  className={className}
->{children}</h1>));
+```js
+import assignerA from './assignerA';
+import assignerB from './assignerB';
+import assignerC from './assignerC';
 
+export default assignPropTypes(
+  assignerA,
+  assignerB,
+  assignerC
+)(YourComponent);
 ```
 
-🙆 Mutates!
+👾 Mutates!
 ----
 
 Target component will be mutated. Keep this fact in your mind.
-
-Why?
-----
-
-The code...
-
-```jsx
-export default assignPropTypes({
-  children: PropTypes.node.isRequired,
-})(({children}) => (<div>{children}</div>));
-```
-
-is more chainable than...
-```jsx
-const DivComponent = ({children}) => (<div>{children}</div>);
-DivComponent.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-export default DivComponent;
-```
 
 Author
 ----
