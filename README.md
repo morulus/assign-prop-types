@@ -4,9 +4,22 @@ assign-prop-types
 Allows you to create stateless [React](https://facebook.github.io/react/) components with assigned [propTypes](https://github.com/reactjs/prop-types) (and [defaultProps](https://facebook.github.io/react/docs/typechecking-with-proptypes.html) & [contextTypes](https://facebook.github.io/react/docs/context.html)) without breaking the chain.
 
 ```js
-export default assignPropTypes({
-  children: PropTypes.node.isRequired,
-})(({ children }) => (<div>{children}</div>));
+export default assignPropTypes(
+  // propTypes
+  {
+    selector: PropTypes.func,
+  },
+  // defaultProps
+  {
+    selector: () => 'No selector passed'
+  },
+  // contextTypes
+  {
+    store: PropTypes.object
+  }
+)(({ selector }, { store }) => (
+  <div>{selector(store.getState())}</div>
+));
 ```
 
 Install
@@ -29,7 +42,7 @@ Import
 import assignPropTypes from 'assign-prop-types';
 ```
 
-In most cases, you will also need to import packages [react](https://www.npmjs.com/package/react) and [prop-types](https://www.npmjs.com/package/prop-types) (or `React.PropTypes` for [React v15.5](https://facebook.github.io/react/warnings/dont-call-proptypes.html)).
+In most cases, you will also need to import packages [react](https://www.npmjs.com/package/react) and [prop-types](https://www.npmjs.com/package/prop-types) (or `React.PropTypes` for [React < v15.5](https://facebook.github.io/react/warnings/dont-call-proptypes.html)).
 
 ```js
 import React from 'react';
