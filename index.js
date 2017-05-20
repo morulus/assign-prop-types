@@ -1,6 +1,15 @@
 exports.__esModule = true;
-const isDevelopment = typeof process === 'object' && process.env && process.env.NODE_ENV !== 'production';
-const ASSIGNER = Symbol('PROP_TYPES_ASSIGNER');
+var isDevelopment = typeof process === 'object' && process.env && process.env.NODE_ENV !== 'production';
+var ASSIGNER = typeof Symbol === 'function' ? Symbol('PROP_TYPES_ASSIGNER') : 'PROP_TYPES_ASSIGNER';
+
+function markAssigner(originalAssigner) {
+  Object.defineProperty(originalAssigner, ASSIGNER, {
+    enumerable: false,
+    writable: false,
+    configurable: false,
+    value: true
+  });
+}
 
 function isNativeObject(something) {
   if (typeof something !== 'object') {
@@ -27,7 +36,7 @@ function isAssigner(something) {
   return true;
 }
 
-const expectedTypes = [
+var expectedTypes = [
   'assigner',
   'propTypes',
   'defaultProps',
@@ -35,11 +44,11 @@ const expectedTypes = [
 ];
 
 function assignPropTypes() {
-  const advanceAssigners = [];
-  const pdc = [];
-  const length = arguments.length;
-  let expectedType = 0;
-  for (let i = 0; i < length; i++) {
+  var advanceAssigners = [];
+  var pdc = [];
+  var length = arguments.length;
+  var expectedType = 0;
+  for (var i = 0; i < length; i++) {
     if (expectedType === 0) {
       if (isAssigner(arguments[i])) {
         advanceAssigners.push(arguments[i]);
@@ -65,13 +74,13 @@ function assignPropTypes() {
     pdc.push(arguments[i]);
     expectedType++;
   }
-  const originalAssigner = function originalAssigner(component) {
+  var originalAssigner = function originalAssigner(component) {
     if (!isComponentLike(component)) {
       throw new TypeError('Assigner called on non-component');
     }
     if (advanceAssigners.length > 0) {
-      const length = advanceAssigners.length;
-      for (let i = 0; i < length; i++) {
+      var length = advanceAssigners.length;
+      for (var i = 0; i < length; i++) {
         component = advanceAssigners[i](component);
       }
     }
@@ -86,12 +95,13 @@ function assignPropTypes() {
     }
     return component;
   };
-  originalAssigner[ASSIGNER] = true;
 
-  const propTypesAssigner = function propTypesAssigner(component) {
+  markAssigner(originalAssigner);
+
+  var propTypesAssigner = function propTypesAssigner(component) {
     if (isNativeObject(component)) {
       // Extending
-      const reassigner = assignPropTypes.apply(null, arguments);
+      var reassigner = assignPropTypes.apply(null, arguments);
       return assignPropTypes(
         originalAssigner,
         reassigner
@@ -99,16 +109,16 @@ function assignPropTypes() {
     } else {
       return originalAssigner(component);
     }
-  }
-  propTypesAssigner[ASSIGNER] = true;
+  };
+  markAssigner(propTypesAssigner);
   return propTypesAssigner;
 }
 
 exports.default = assignPropTypes;
-const combineAssigners = exports.combineAssigners = function combineAssigners() {
-  let pseudoComponent = function() {};
-  const assigners = Array.prototype.slice.call(arguments);
-  assigners.forEach((assigner) => {
+exports.combineAssigners = function combineAssigners() {
+  var pseudoComponent = function() {};
+  var assigners = Array.prototype.slice.call(arguments);
+  assigners.forEach(function(assigner) {
     pseudoComponent = assigner(pseudoComponent);
   });
   return assignPropTypes(
