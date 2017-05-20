@@ -53,7 +53,7 @@ import assignPropTypes from 'assign-prop-types';
 Usage
 ----
 
-The function assignPropTypes accepts optional arguments `propTypes`, `defaultProp`, `contextTypes`. It returns function, called assigner, which, in turn, accepts React component and returns component, mutaded by passed properties.
+The function assignPropTypes accepts optional parameters `propTypes`, `defaultProp`, `contextTypes`. It returns function, called assigner, which, in turn, accepts React component and returns component, mutaded by passed properties.
 
 ```js
 export default assignPropTypes({
