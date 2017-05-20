@@ -5,8 +5,13 @@
   "main": "lib/index.js",
   "module": "es/index.js",
   "scripts": {
-    "test": "./node_modules/.bin/eslint es && ./node_modules/.bin/jest test.js",
-    "build": "rm -rf lib && babel es -d lib"
+    "test": "npm run lint && npm run testjest",
+    "lint": "./node_modules/.bin/eslint es",
+    "testjest": "./node_modules/.bin/jest test.js",
+    "build": "rm -rf lib && babel es -d lib",
+    "prepublish": "npm run lint && npm run build && npm run testjest",
+    "publish-beta": "npm run prepublish && npm publish --tag beta",
+    "publish": "npm run prepublish && npm publish"
   },
   "keywords": [
     "react",
