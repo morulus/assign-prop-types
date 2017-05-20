@@ -1,10 +1,12 @@
 {
   "name": "assign-prop-types",
-  "version": "1.1.0",
+  "version": "1.2.0-beta",
   "description": "Assign propTypes (and defaultProps & contextTypes) to the component in a functional style",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "module": "es/index.js",
   "scripts": {
-    "test": "./node_modules/.bin/eslint index.js && ./node_modules/.bin/jest test.js"
+    "test": "./node_modules/.bin/eslint es && ./node_modules/.bin/jest test.js",
+    "build": "rm -rf lib && babel es -d lib && npm test"
   },
   "keywords": [
     "react",
@@ -13,6 +15,8 @@
   "author": "Vladimir Kalmykov <vladimirmorulus@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
     "eslint": "^3.19.0",
     "jest": "^20.0.0",
     "prop-types": "^15.5.8"

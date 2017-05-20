@@ -1,5 +1,5 @@
 const PropTypes = require('prop-types');
-const _assignPropTypes = require('./index.js');
+const _assignPropTypes = require('./lib/index.js');
 const assignPropTypes = _assignPropTypes.default;
 const combineAssigners = _assignPropTypes.combineAssigners;
 
@@ -270,13 +270,13 @@ describe('assignPropTypes', () => {
   }
 
   it ('Type restriction > propTypes', () => {
-    expect(invalidTypePropTypes).toThrowError('assignPropTypes can accept propTypes only of type object, boolean passed');
+    expect(invalidTypePropTypes).toThrowError('Expects propTypes of type object, boolean passed');
   });
   it ('Type restriction > defaultProps', () => {
-    expect(invalidTypeDefaultProps).toThrowError('assignPropTypes can accept defaultProps only of type object, object passed');
+    expect(invalidTypeDefaultProps).toThrowError('Expects defaultProps of type object, object passed');
   });
   it ('Type restriction > contextTypes', () => {
-    expect(invalidTypeContextTypes).toThrowError('assignPropTypes can accept contextTypes only of type object, function passed');
+    expect(invalidTypeContextTypes).toThrowError('Expects contextTypes of type object, function passed');
   });
   it ('Type restriction > falsy', () => {
     expect(quasiInvalidType).not.toThrowError();
