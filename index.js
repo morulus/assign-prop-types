@@ -1,6 +1,6 @@
 exports.__esModule = true;
-var isDevelopment = typeof process === 'object' && process.env && process.env.NODE_ENV !== 'production';
-var ASSIGNER = Symbol('PROP_TYPES_ASSIGNER');
+const isDevelopment = typeof process === 'object' && process.env && process.env.NODE_ENV !== 'production';
+const ASSIGNER = Symbol('PROP_TYPES_ASSIGNER');
 
 function isNativeObject(something) {
   if (typeof something !== 'object') {
@@ -27,7 +27,7 @@ function isAssigner(something) {
   return true;
 }
 
-var expectedTypes = [
+const expectedTypes = [
   'assigner',
   'propTypes',
   'defaultProps',
@@ -35,10 +35,10 @@ var expectedTypes = [
 ];
 
 function assignPropTypes() {
-  var advanceAssigners = [];
-  var pdc = [];
-  var length = arguments.length;
-  var expectedType = 0;
+  const advanceAssigners = [];
+  const pdc = [];
+  const length = arguments.length;
+  let expectedType = 0;
   for (let i = 0; i < length; i++) {
     if (expectedType === 0) {
       if (isAssigner(arguments[i])) {
@@ -65,13 +65,13 @@ function assignPropTypes() {
     pdc.push(arguments[i]);
     expectedType++;
   }
-  var originalAssigner = function originalAssigner(component) {
+  const originalAssigner = function originalAssigner(component) {
     if (!isComponentLike(component)) {
       throw new TypeError('Assigner called on non-component');
     }
     if (advanceAssigners.length > 0) {
-      var length = advanceAssigners.length;
-      for (var i = 0; i < length; i++) {
+      const length = advanceAssigners.length;
+      for (let i = 0; i < length; i++) {
         component = advanceAssigners[i](component);
       }
     }
@@ -105,9 +105,9 @@ function assignPropTypes() {
 }
 
 exports.default = assignPropTypes;
-var combineAssigners = exports.combineAssigners = function combineAssigners() {
-  var pseudoComponent = function() {};
-  var assigners = Array.prototype.slice.call(arguments);
+const combineAssigners = exports.combineAssigners = function combineAssigners() {
+  let pseudoComponent = function() {};
+  const assigners = Array.prototype.slice.call(arguments);
   assigners.forEach((assigner) => {
     pseudoComponent = assigner(pseudoComponent);
   });
