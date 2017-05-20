@@ -2,3 +2,6 @@ language: node_js
 node_js:
   - 6.10.3
   - 7.10.0
+
+before_script:
+  - npm run build

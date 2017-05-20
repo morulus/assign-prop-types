@@ -6,7 +6,7 @@
   "module": "es/index.js",
   "scripts": {
     "test": "./node_modules/.bin/eslint es && ./node_modules/.bin/jest test.js",
-    "build": "rm -rf lib && babel es -d lib && npm test"
+    "build": "rm -rf lib && babel es -d lib",
   },
   "keywords": [
     "react",
