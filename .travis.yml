@@ -4,3 +4,12 @@ node_js:
 
 before_script:
   - npm run build
+
+deploy:
+  api_key: $NPM_API_KEY
+  tag: beta
+  email: vladimirmorulus@gamil.com
+  provider: npm
+  skip_cleanup: true
+  on:
+    branch: beta
