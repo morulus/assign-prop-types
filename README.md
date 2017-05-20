@@ -53,7 +53,7 @@ import assignPropTypes from 'assign-prop-types';
 Usage
 ----
 
-The function assignPropTypes accepts optional parameters `propTypes`, `defaultProp`, `contextTypes`. It returns function, called assigner, which, in turn, accepts React component and returns component, mutaded by passed properties.
+The function assignPropTypes accepts optional parameters [`propTypes`], [`defaultProp`], [`contextTypes`] and returns function, called assigner, which, in turn, accepts React component and returns component, mutaded with passed properties.
 
 ```js
 export default assignPropTypes({
@@ -78,19 +78,22 @@ Assigners can be prepared in advance:
 
 ```js
 const assignUsualTypes = assignPropTypes({
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
+}, {
+  children: "No children specified"
 });
 ```
-And applied later:
+And applied later multiple times:
 
 ```js
-export default assignUsualTypes(({ children }) => (<h2>{children}</h2>));
+export const H1 = assignUsualTypes(({ children }) => (<h1>{children}</h1>));
+export const H2 = assignUsualTypes(({ children }) => (<h2>{children}</h2>));
 ```
 
 Extending
 ----
 
-Assigners can be extended. To perform it, just call assigner with advanced configuration:
+Assigners can be extended. To extend assigner, just call it with advanced configuration:
 
 ```js
 const usualPropTypes = assignPropTypes({
@@ -99,9 +102,11 @@ const usualPropTypes = assignPropTypes({
 export default usualPropTypes({
   title: PropTypes.string,
 })(YourComponent);
+
+// propTypes will be { children, title }
 ```
 
-Or passing another assigner(s):
+Or by passing another assigner(s) to combine them:
 
 ```js
 import assignerA from './assignerA';
