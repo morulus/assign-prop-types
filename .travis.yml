@@ -1,20 +1,16 @@
 language: node_js
 node_js:
-  - 6.10.3
-
+- 6.10.3
 before_script:
-  - npm run build
+- npm run build
 
-jobs:
-  include:
-    - stage: npm release
-      node_js: "6.10.3"
-      script: echo "Deploying to npm ..."
-      deploy:
-        api_key: "$NPM_API_KEY"
-        tag: beta
-        email: vladimirmorulus@gamil.com
-        provider: npm
-        skip_cleanup: true
-        on:
-          branch: beta
+deploy:
+  api_key:
+    secure: Xr8aQjLOLC/QyRvBlR7WLA5KdP7iTnMmfm3uLst8oOwMDm5k4OeQccC/9VXXPS/J+6IHGvTsK4UZJr3uD+N4uiFF5MiHOlNsLVtr8KW8NIlL8YIoKxsXWE38/koXq5EBC9IqJz+rI+GDXIatJaS60+MheM6PtnhQ3mkwceMqwtgS6VxtqG6nBMAK1aJ0ghiQaX60oFaWSbBM3Tf6PDOG78d29tQUleDkVlMDRF/j/LU4opAhP189/GprebgLD5hSkayI6vwjZT8BQZZIB1deK5680lNvfi3qxXN15GuDKtEFMdx8/fsNfSqFVfGtEPVsn4+VlCaVRkq7gsjmJTy4z0d3rBtXrORSAEns0diZqZ8sKeqMHNG/m/E2ks7IZw+5ulRzJ1M1Gv1g7QRmA0vtdsOLrZV0fYBM/UpWXSOJn1ualKo+eVVSIAOUvIgal8hJgP0XMuiO2uU8g6nfTt0XxlCMmFBjEUNCeo0yRSPM/tG7CZv8YeURZekXONpkIC3DfyLz74mb2yekeTMXj+oCiX3kX++cFG3WgvEBnTQVIWVvwASXdyOA+s8gxUR5IADb32MzXulv4DY4QhD2iXFDgk2aoNzRil5hTyGVn5P7P27IfrAl2oRN+gZhY9CGeRwDY0r9JCgsA5f2D2MTl6/DLbS53YlEaXSnIt4jit9imbU=
+  tag: beta
+  email: vladimirmorulus@gamil.com
+  provider: npm
+  skip_cleanup: true
+  before_script: "npm run build"
+  on:
+    branch: beta
