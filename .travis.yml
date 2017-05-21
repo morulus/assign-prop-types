@@ -3,14 +3,13 @@ node_js:
 - 6.10.3
 before_script:
 - npm run build
-
 deploy:
   api_key:
-    secure: Xr8aQjLOLC/QyRvBlR7WLA5KdP7iTnMmfm3uLst8oOwMDm5k4OeQccC/9VXXPS/J+6IHGvTsK4UZJr3uD+N4uiFF5MiHOlNsLVtr8KW8NIlL8YIoKxsXWE38/koXq5EBC9IqJz+rI+GDXIatJaS60+MheM6PtnhQ3mkwceMqwtgS6VxtqG6nBMAK1aJ0ghiQaX60oFaWSbBM3Tf6PDOG78d29tQUleDkVlMDRF/j/LU4opAhP189/GprebgLD5hSkayI6vwjZT8BQZZIB1deK5680lNvfi3qxXN15GuDKtEFMdx8/fsNfSqFVfGtEPVsn4+VlCaVRkq7gsjmJTy4z0d3rBtXrORSAEns0diZqZ8sKeqMHNG/m/E2ks7IZw+5ulRzJ1M1Gv1g7QRmA0vtdsOLrZV0fYBM/UpWXSOJn1ualKo+eVVSIAOUvIgal8hJgP0XMuiO2uU8g6nfTt0XxlCMmFBjEUNCeo0yRSPM/tG7CZv8YeURZekXONpkIC3DfyLz74mb2yekeTMXj+oCiX3kX++cFG3WgvEBnTQVIWVvwASXdyOA+s8gxUR5IADb32MzXulv4DY4QhD2iXFDgk2aoNzRil5hTyGVn5P7P27IfrAl2oRN+gZhY9CGeRwDY0r9JCgsA5f2D2MTl6/DLbS53YlEaXSnIt4jit9imbU=
+    secure: XGgoHuGveZR+1SIqL6MwzEMvZ2s49jt8qJzYbYV5inohrgcZmuHHZ8IlOQREq41Hshw3p/uLgfEwd6rYetPP5WUOVL1Wj9kdsZPJZjPVJfcz8vEDCH0cggSy37Z/wK6FeaE+jy6tctK9vDZbzX5luF4R8x1OCj/qmJdWD/sbnH94s7DuXJSwcFrml94OYEt2jQ7E+EZeKRCcpKrILSoxWLfg3Mu4M/CxRw0vXKo8ZOxlnFe5O7U1JIplspRX8kDRT8Gsem/oY4YdWshx1uFRs8yvEiM+6pJU+Bbg2fZhJ4H4YLP/S8g3DXBzRFkOY4Osgs5O+pktuU1fuilm8U/abo5wQnWVTZItShXGVM8ko2OB6lWPpqQa/VJu2fhRg8w6+NsdoxCqnLCR+mePZmLcKU4KvoE+GARdgIa7+8OWDzouTBUqcvzrc3GtKrqgdCRAmwYU7XCTJfjy8aYFFtuprul03KMtfbtQRTgo2No2/JBXUZN47DKjvy/Cc2TN7mH0U9oEcFR/7wGNfX9dw3m1L8YQbkbq/mmN2lyzE76Zm29ggI/ir1X9rrbtYP+uJ23za78RWCwQchmWn8eRlB7hPjs7kF/kUIloFBbPHSmbb0QYJJSOKGxb+ZQ/ucEjhUmCDbhHvar53EDJtZh9lDpWluW+hDo84KcrpGzj7u+ilC0=
   tag: beta
   email: vladimirmorulus@gamil.com
   provider: npm
   skip_cleanup: true
-  before_script: "npm run build"
+  before_script: npm run build
   on:
     branch: beta
