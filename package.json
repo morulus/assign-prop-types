@@ -13,7 +13,7 @@
     "build": "npm run clean && npm run build:es && npm run build:commonjs",
     "build:es": "cross-env BABEL_ENV=es babel src -d es",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src -d lib",
-    "clean": "rimraf lib",
+    "clean": "rimraf lib es",
     "prepublish": "npm run build",
     "publish-beta": "npm publish --tag beta"
   },
