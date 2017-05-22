@@ -7,7 +7,7 @@
   "js:next": "es/index.js",
   "scripts": {
     "test": "cross-env BABEL_ENV=test npm run lint && npm run testjest",
-    "crosstest": "npm run prepublish && npm run lint && npm run testjest",
+    "crosstest": "npm run prepublish && npm run lint && npm run testjest && npm run clean",
     "lint": "./node_modules/.bin/eslint es",
     "testjest": "./node_modules/.bin/jest test.js",
     "build": "npm run clean && npm run build:es && npm run build:commonjs",
