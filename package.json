@@ -4,6 +4,7 @@
   "description": "Assign propTypes (and defaultProps & contextTypes) to the component in a functional style",
   "main": "lib/index.js",
   "module": "es/index.js",
+  "js:next": "es/index.js",
   "scripts": {
     "test": "cross-env BABEL_ENV=test npm run lint && npm run testjest",
     "crosstest": "npm run prepublish && npm run lint && npm run testjest",
