@@ -9,6 +9,6 @@ deploy:
   email: vladimirmorulus@gamil.com
   provider: npm
   skip_cleanup: true
-  before_script: npm run build
+  before_script: npm run prepublish
   on:
     branch: master
