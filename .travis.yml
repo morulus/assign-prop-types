@@ -6,6 +6,7 @@ before_script:
 deploy:
   api_key:
     secure: XGgoHuGveZR+1SIqL6MwzEMvZ2s49jt8qJzYbYV5inohrgcZmuHHZ8IlOQREq41Hshw3p/uLgfEwd6rYetPP5WUOVL1Wj9kdsZPJZjPVJfcz8vEDCH0cggSy37Z/wK6FeaE+jy6tctK9vDZbzX5luF4R8x1OCj/qmJdWD/sbnH94s7DuXJSwcFrml94OYEt2jQ7E+EZeKRCcpKrILSoxWLfg3Mu4M/CxRw0vXKo8ZOxlnFe5O7U1JIplspRX8kDRT8Gsem/oY4YdWshx1uFRs8yvEiM+6pJU+Bbg2fZhJ4H4YLP/S8g3DXBzRFkOY4Osgs5O+pktuU1fuilm8U/abo5wQnWVTZItShXGVM8ko2OB6lWPpqQa/VJu2fhRg8w6+NsdoxCqnLCR+mePZmLcKU4KvoE+GARdgIa7+8OWDzouTBUqcvzrc3GtKrqgdCRAmwYU7XCTJfjy8aYFFtuprul03KMtfbtQRTgo2No2/JBXUZN47DKjvy/Cc2TN7mH0U9oEcFR/7wGNfX9dw3m1L8YQbkbq/mmN2lyzE76Zm29ggI/ir1X9rrbtYP+uJ23za78RWCwQchmWn8eRlB7hPjs7kF/kUIloFBbPHSmbb0QYJJSOKGxb+ZQ/ucEjhUmCDbhHvar53EDJtZh9lDpWluW+hDo84KcrpGzj7u+ilC0=
+  tag: beta
   email: vladimirmorulus@gamil.com
   provider: npm
   skip_cleanup: true
