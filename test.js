@@ -1,7 +1,5 @@
-const PropTypes = require('prop-types');
-const _assignPropTypes = require('./lib/index.js');
-const assignPropTypes = _assignPropTypes.default;
-const combineAssigners = _assignPropTypes.combineAssigners;
+import PropTypes from 'prop-types';
+import assignPropTypes, { combineAssigners } from './';
 
 const DEFAULT_NODE = Symbol('DEFAULT_NODE');
 const DEFAULT_FUNC = Symbol('DEFAULT_FUNC');
