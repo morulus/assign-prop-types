@@ -11,4 +11,4 @@ deploy:
   skip_cleanup: true
   before_script: npm run prepublish
   on:
-    tags: true
+    branch: master
