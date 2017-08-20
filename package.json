@@ -1,6 +1,6 @@
 {
   "name": "assign-prop-types",
-  "version": "1.2.3-beta",
+  "version": "1.2.3",
   "description": "Assign propTypes (and defaultProps & contextTypes) to the component in a functional style",
   "main": "lib/index.js",
   "module": "es/index.js",
